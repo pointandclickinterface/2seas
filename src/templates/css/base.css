@@ -1,0 +1,22 @@
+body{
+    background: linear-gradient(0.90turn, #95D3BF,#0B2453);
+}
+
+p{
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+}
+h1{
+    color: #fff;
+}
+
+.nav-head{
+    margin-top: 2em;
+    margin-left: 4em;
+    margin-bottom: 2em;
+    color: #fff;
+}
+
+.logo-text{
+    width: 10em;
+}

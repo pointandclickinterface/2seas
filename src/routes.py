@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import sqlite3
 
 #functions
@@ -11,7 +11,7 @@ app= Flask(__name__)
 
 @app.route("/")
 def conn():
-    return "Connected Properly"
+    return render_template('index.html', the_title='2seas')
 
 if __name__ == "__main__":
     startdb()
