@@ -6,10 +6,18 @@ p{
     color: #fff;
     font-family: 'Open Sans', sans-serif;
 }
-h1{
+h1,h2,h3,h4{
     color: #fff;
 }
 
+.world{
+    width: 100%;
+    
+}
+
+.heading{
+    text-align: center;
+}
 .nav-head{
     margin-top: 2em;
     margin-left: 4em;
