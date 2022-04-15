@@ -15,6 +15,11 @@ h1,h2,h3,h4{
     
 }
 
+.country{
+    width: 100%;
+    fill:white;
+}
+
 .heading{
     text-align: center;
 }
@@ -27,4 +32,13 @@ h1,h2,h3,h4{
 
 .logo-text{
     width: 10em;
+}
+
+.back-button{
+    transform: translateY(50%);
+    margin-right: 1.5em;
+}
+
+.live:hover{
+    fill: white;
 }
