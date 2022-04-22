@@ -42,3 +42,8 @@ h1,h2,h3,h4{
 .live:hover{
     fill: white;
 }
+
+#moreInfo{
+    color: lightblue;
+    margin-top: 5%;
+}
