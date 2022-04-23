@@ -1026,18 +1026,29 @@
     }
 
   }
+  function findRegion(order){
+    for(let part of watergdp){
+      if (part[5]==order){
+        return part
+      } 
+    }
+
+  }
 
   function test(place,order){
+    infoString='/'+place.replaceAll(" ", "_")
     $('#heading').text(place);
     $('#aboutText').hide();
-    $('#moreInfo').show();
+    $('#moreInfo').attr('href',infoString).show();
     $('#countryName').text(place);
-
     var gdpData=findCountry(order)
+    for (i=0; i < regions.length; i++){
+      if(findCountry(order)[3]==regions[i][0]){
+        region=regions[i]}}
     var data = [
     {
-    x: ['Potable Water per Capita', 'GDP Per Capita'],
-    y: [gdpData[1], gdpData[2]],
+    x: ['Potable Water per Capita', 'GDP Per Capita', 'Potable Water per Capita Region Average', 'GDP Per Capita Region Average'],
+    y: [gdpData[1], gdpData[2], region[1], region[2]],
     type: 'bar'
     }
     ];
@@ -1046,7 +1057,7 @@
   }
 
   countries = recieve_countries({{countriesList|tojson}});
-
+  regions = recieve_countries({{regionWaterGdp|tojson}})
   watergdp = recieve_countries({{waterGdp|tojson}})
 
   for (country of countries){

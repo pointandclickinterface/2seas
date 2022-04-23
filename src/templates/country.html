@@ -49,11 +49,47 @@
       <img class="country" id="country-svg">
       </div>     
       <div class="col-md-6">
-          <div class="row">
+          <div class="row" style="margin-bottom:2em">
               <div class="col">
-                <h3 class="heading" id="heading"></h3>
+                <h2 class="heading"><span id="heading"></span><span id="asof"> as of <span id="year"></span></span></h2>
               </div>
           </div>
+          <div class="row">
+            <div class="col minorheading">
+              <h4>Potable Water</h4>
+            </div>
+            <div class="col minortext">
+                <p><span id="access">Potable Water is accessible when needed <span id="accesiblity"></span>% of the time.</span>
+                <span id="contam">Water here is free from contamination <span id="contamination"></span>% of the time.</span>
+                
+                </p>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col minorheading">
+            <h4>Sanitation and Sewage</h4>
+          </div>
+          <div class="col minortext">
+            <p><span id="sewage"><span id="sewer"></span>% of people mainly use reticulated sewage</span>
+              <span id="septic"> <span id="septictank"></span>% of people mainly use a septic system.</span>
+              <span id="lat"><span id="latrine"></span>% of people mainly use a latrine system.</span>
+              <span id="noth"><span id="nothing"></span>% of people no access to any kind of sanitation system.</span>
+              </p>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col minorheading">
+          <h4>Hydroelectric Dams</h4>
+        </div>
+        <div class="col minortext">
+          <p>Lorem Ipsum</p>
+        </div>
+    </div>
+    <div class="row whatcanido">
+      <a id="whatcanido">
+      What can I do?
+      </a>
+    </div>
       </div>
   </div>
 
@@ -64,16 +100,47 @@
   function recieve_country(vars) {
     return vars.replaceAll("_", " ")
   }
+  function recieve_data(vars) {
+    return JSON.parse(vars)
+  }
   function recieve_title(vars){
     console.log(vars)
     return vars.replaceAll('&#39;', "'")
   }
+
+  function getAvailableData(data, ord, tag){
+    for (i=0;i<data.length;i++){
+      reverse=data.length-1-i;
+      if (data[reverse][ord] != 'nan'){
+        return data[reverse][ord]
+      }
+    }
+    $(tag).hide();
+  }
+
   country = recieve_country('{{ the_title }}');
   title=recieve_title('{{ the_title }}');
-  console.log(title)
+  countries = recieve_data({{countriesList|tojson}});
+  dataSum = recieve_data({{data_sum|tojson}});
+  targets = recieve_data({{target|tojson}});
+
+
+  
+
+
+
   imageLink="static/images/SVG/SVG/"+title+".svg"
-  console.log(imageLink)
   $('#heading').text(country);
-   $('#country-svg').attr('src',imageLink)
+  $('.countryTitle').text(country);
+  $('#country-svg').attr('src',imageLink);
+
+  $('#accesiblity').text(getAvailableData(dataSum,9,'#access'));
+  $('#contamination').text(getAvailableData(dataSum,10,'#contam'));
+  $('#sewer').text(getAvailableData(dataSum,26,'#sewage'));
+  $('#latrine').text(getAvailableData(dataSum,28,'#lat'));
+  $('#septictank').text(getAvailableData(dataSum,27,'#septic'));
+  $('#nothing').text(getAvailableData(dataSum,29,'#noth'));
+  $('#year').text(getAvailableData(dataSum,3,'#asof').replace(".0",""));
+
 </script>
 </html>
