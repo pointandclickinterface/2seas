@@ -22,8 +22,12 @@ h1,h2,h3,h4{
 }
 
 .country{
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
     fill:white;
+}
+.country-area{
+    height: 75%;
 }
 
 .heading{
@@ -52,6 +56,10 @@ h1,h2,h3,h4{
 #moreInfo{
     color: lightblue;
     margin-top: 5%;
+    border-style: solid;
+    padding: 0.5em;
+    border-radius: 10px;
+    border-width: 2px;
 }
 
 .minorheading{
@@ -67,4 +75,35 @@ h1,h2,h3,h4{
 .whatcanido{
     text-align: center;
     margin-top: 2em;
+    margin-bottom: 10em;
+}
+
+#whatcanido{
+    border-style: solid;
+    border-color: lightblue;
+    padding: 0.5em;
+    border-radius: 10px;
+    border-width: 2px;
+}
+
+.svg-wrap{
+    width: 12em;
+    height: 12em;
+    border-radius: 50%;
+    border-width: .25em;
+    border-color: white;
+    border-style: solid;
+    stroke: white;
+    display: flex;
+    justify-content: center;
+    margin-left: 30%;
+    cursor: pointer;
+}
+
+.icon{
+    width: 8em;
+}
+
+.activeicon{
+    transform: translateX(75%);
 }

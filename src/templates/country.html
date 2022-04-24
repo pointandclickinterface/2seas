@@ -44,7 +44,7 @@
 
 <div class="container">    
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 country-area">
         <!-- <img class="world" src="{{ url_for('static',filename='images/SVG/world-map.svg') }}"> -->
       <img class="country" id="country-svg">
       </div>     
@@ -77,17 +77,17 @@
               </p>
           </div>
       </div>
-      <div class="row">
+      <div class="row" id="targets">
         <div class="col minorheading">
-          <h4>Hydroelectric Dams</h4>
+          <h4>Meeting 2030 targets</h4>
         </div>
         <div class="col minortext">
-          <p>Lorem Ipsum</p>
+          <p>According to the World Bank, in order for this country to meet its 2030 Water and Sanitation Development goals as outlined by the United Nations Millenium Goals it will need to spend <span id="basicwater"></span> million USD for all of its citizens to have access to basic potable water.</p>
         </div>
     </div>
     <div class="row whatcanido">
       <a id="whatcanido">
-      What can I do?
+      What can be done?
       </a>
     </div>
       </div>
@@ -104,7 +104,6 @@
     return JSON.parse(vars)
   }
   function recieve_title(vars){
-    console.log(vars)
     return vars.replaceAll('&#39;', "'")
   }
 
@@ -117,12 +116,64 @@
     }
     $(tag).hide();
   }
+  function getDataParam(data, ord){
+    for (i=0;i<data.length;i++){
+      reverse=data.length-1-i;
+      if (data[reverse][ord] != 'nan'){
+        return data[reverse][ord]
+      }
+    }
+  }
+
+  function getTargets(ord){
+    for(i=0;i<targets.length;i++){
+      if (ord == targets[i][20]){
+        return targets[i]        
+      }
+    }
+    $('#targets').hide();
+  }
+
+  // function getThisCountry(places){
+
+  // }
 
   country = recieve_country('{{ the_title }}');
   title=recieve_title('{{ the_title }}');
   countries = recieve_data({{countriesList|tojson}});
   dataSum = recieve_data({{data_sum|tojson}});
   targets = recieve_data({{target|tojson}});
+  countryord=parseInt('{{ countryord }}');
+
+
+  // what can I do button
+  function builtButton(){
+    thisCountry='{{ the_title }}'
+    statsString = "+Water"
+    if (getDataParam(dataSum,27)>10){
+      statsString += "+Septic"
+    }
+    if (getDataParam(dataSum,28)>5){
+      statsString += "+Latrine"
+    }
+    if (getDataParam(dataSum,26)>10){
+      statsString += "+Sewage"
+    }
+    if (getDataParam(dataSum,29)>10){
+      statsString += "+Sanitation"
+    }
+    if (getDataParam(dataSum,9)<90){
+      statsString += "+Potable Water"
+    }
+    if (getDataParam(dataSum,10)<95){
+      statsString += "+Contamination"
+    }
+
+    return "../whatcanido/"+thisCountry+statsString
+  }
+
+  whatcanidostring=builtButton()
+  $("#whatcanido").attr('href',whatcanidostring)
 
 
   
@@ -141,6 +192,10 @@
   $('#septictank').text(getAvailableData(dataSum,27,'#septic'));
   $('#nothing').text(getAvailableData(dataSum,29,'#noth'));
   $('#year').text(getAvailableData(dataSum,3,'#asof').replace(".0",""));
+
+  thistarget = getTargets(countryord);
+
+  $('#basicwater').text(thistarget[3]);
 
 </script>
 </html>

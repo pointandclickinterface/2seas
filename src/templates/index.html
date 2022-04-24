@@ -1000,7 +1000,7 @@
             <div class="col">
             <div id="barChart">   
             </div>
-            <p id="aboutText">Potable water is a basic human right. 2seas is a project to integrate the <a href="https://www.kaggle.com/datasets/harshjhunjhunwala/water-pollution-data-whounicef-20002021?select=JMP_2020_WinHCF_AFG_Afghanistan.xlsx">TeamSeas potable water dataset</a> compiled with in colaboration with Unicef with other world water datasets. We aim to explore how different countries in the set use potable water. Hover across the blue countries to learn more</p>
+            <p id="aboutText">Potable water is a basic human right. 2seas is a project to integrate the <a href="https://www.kaggle.com/datasets/harshjhunjhunwala/water-pollution-data-whounicef-20002021?select=JMP_2020_WinHCF_AFG_Afghanistan.xlsx">TeamSeas potable water dataset</a> compiled with in colaboration with Unicef with other world water datasets including the World Bank Water Goals Dataset. We aim to explore how different countries in the set use potable water. Hover across and click the blue countries to learn more.</p>
               <!-- <h3 class="heading" id="heading"></h3> -->
             </div>
         </div>
@@ -1047,13 +1047,14 @@
         region=regions[i]}}
     var data = [
     {
-    x: ['Potable Water per Capita', 'GDP Per Capita', 'Potable Water per Capita Region Average', 'GDP Per Capita Region Average'],
+    x: ['Potable Water per Capita', 'GDP Per Capita', 'Potable Water per Capita <br>Region Average', 'GDP Per Capita <br>Region Average'],
     y: [gdpData[1], gdpData[2], region[1], region[2]],
-    type: 'bar'
+    type: 'bar',
+    marker: {color:"rgba(255,255,255,0.6)"}
     }
     ];
 
-    Plotly.newPlot('barChart', data,{plot_bgcolor: 'rgba(0, 0, 0, 0)',paper_bgcolor:'rgba(0, 0, 0, 0)'});
+    Plotly.newPlot('barChart', data,{height: 400, plot_bgcolor: 'rgba(0, 0, 0, 0)',paper_bgcolor:'rgba(0, 0, 0, 0)', font:{color:'white', size:10, family:'Open Sans'}});
   }
 
   countries = recieve_countries({{countriesList|tojson}});

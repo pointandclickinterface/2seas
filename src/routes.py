@@ -22,6 +22,13 @@ def getregionWaterGDP():
     water_gdp_array= list(map(lambda x: x , result))
     return water_gdp_array
 
+def getSolutions():
+    cursor.execute('select * from solutions')
+    result= cursor.fetchall()
+
+    solution_array= list(map(lambda x: x , result))
+    return solution_array
+
 def getCountries():
     cursor.execute('select * from country')
     result= cursor.fetchall()
@@ -57,6 +64,7 @@ def conn():
 
 @app.route("/<country>")
 def path(country):
+    code=0
     countryList=getCountries()
     countries=json.dumps(countryList)
     for place in countryList:
@@ -69,11 +77,21 @@ def path(country):
     dataSummary=json.dumps(dataSummaryList)
     targets=json.dumps(getTargets())
     imageLink= "{{ url_for('static',filename='images/SVG/SVG/"+country+".svg') }}"
-    return render_template("country.html", the_title=country, image_src=imageLink, countriesList=countries, data_sum=dataSummary, target=targets)
+    return render_template("country.html", the_title=country, image_src=imageLink, countriesList=countries, data_sum=dataSummary, target=targets, countryord=code)
 
-@app.route("/whatcanido/<place>")
-def whatcanido(place):
-    return(place)
+@app.route("/whatcanido/<problem>")
+def whatcanido(problem):
+    probArr=problem.split("+")
+    backCountry=probArr.pop(0)
+    solv=getSolutions()
+    solutionArr=[]
+    for prob in probArr:
+        tempArr=list(filter(lambda x: x[4]==prob, solv))
+        if len(tempArr)>0:
+            for item in tempArr:
+                solutionArr.append(item)
+    solutions=json.dumps(solutionArr)
+    return render_template("whatcanido.html", the_title="What can I do?", solv=solutions, countryBack=backCountry)
 
 @app.route("/404")
 def errors():

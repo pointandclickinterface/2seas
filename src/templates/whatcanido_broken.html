@@ -1,0 +1,122 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <title>{{ the_title }}</title> -->
+  <!-- ico file -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/base.css') }}">
+    
+  <!-- <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Source+Sans+Pro" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> -->
+</head>
+
+<body>
+
+<!-- <nav class="navbar navbar-light bg-light">
+    <div class="nav-head">
+      <a href="/">
+        <svg width="2.5em" class="back-button" viewBox="0 0 1207 1728" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+          <g transform="matrix(1,0,0,1,-1033.94,-1732.23)">
+            <g transform="matrix(6.12323e-17,-1,0.698343,4.27612e-17,-175.753,4493.91)">
+                <path d="M1897.81,1732.23L2761.68,3459.97L1033.94,3459.97L1897.81,1732.23ZM1897.81,2070.45L2494.12,3263.08C2494.12,3263.08 1301.5,3263.08 1301.5,3263.08L1897.81,2070.45Z" style="fill:white;"/>
+            </g>
+          </g>
+        </svg>
+      </a> 
+      <img class="logo-text" src="{{ url_for('static',filename='images/SVG/logo-with-text.svg') }}">
+    </div>
+</nav> -->
+
+<!-- <div class="container">    
+    <div class="row">
+      <div class="col-md-6"> -->
+        <!-- <img class="world" src="{{ url_for('static',filename='images/SVG/world-map.svg') }}"> -->
+      <!-- <img class="country" id="country-svg"> -->
+      <!-- </div>     
+      <div class="col-md-6">
+          <div class="row" style="margin-bottom:2em">
+              <div class="col">
+                <h2 class="heading">Heading</h2>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col minorheading">
+              <h4>Potable Water</h4>
+            </div>
+            <div class="col minortext">
+                <p><span id="access">Potable Water is accessible when needed <span id="accesiblity"></span>% of the time.</span>
+                <span id="contam">Water here is free from contamination <span id="contamination"></span>% of the time.</span>
+                
+                </p>
+            </div>
+        </div>
+      </div>
+  </div>
+</div> -->
+
+</body>
+
+
+<script type="text/javascript">
+  // function recieve_country(vars) {
+  //   return vars.replaceAll("_", " ")
+  // }
+  // function recieve_data(vars) {
+  //   return JSON.parse(vars)
+  // }
+  // function recieve_title(vars){
+  //   console.log(vars)
+  //   return vars.replaceAll('&#39;', "'")
+  // }
+
+  // function getAvailableData(data, ord, tag){
+  //   for (i=0;i<data.length;i++){
+  //     reverse=data.length-1-i;
+  //     if (data[reverse][ord] != 'nan'){
+  //       return data[reverse][ord]
+  //     }
+  //   }
+  //   $(tag).hide();
+  // }
+
+  // country = recieve_country('{{ the_title }}');
+  // title=recieve_title('{{ the_title }}');
+  // countries = recieve_data({{countriesList|tojson}});
+  // dataSum = recieve_data({{data_sum|tojson}});
+  // targets = recieve_data({{target|tojson}});
+
+
+  
+
+
+
+  // imageLink="static/images/SVG/SVG/"+title+".svg"
+  // $('#heading').text(country);
+  // $('.countryTitle').text(country);
+  // $('#country-svg').attr('src',imageLink);
+
+  // $('#accesiblity').text(getAvailableData(dataSum,9,'#access'));
+  // $('#contamination').text(getAvailableData(dataSum,10,'#contam'));
+  // $('#sewer').text(getAvailableData(dataSum,26,'#sewage'));
+  // $('#latrine').text(getAvailableData(dataSum,28,'#lat'));
+  // $('#septictank').text(getAvailableData(dataSum,27,'#septic'));
+  // $('#nothing').text(getAvailableData(dataSum,29,'#noth'));
+  // $('#year').text(getAvailableData(dataSum,3,'#asof').replace(".0",""));
+
+</script>
+</html>
